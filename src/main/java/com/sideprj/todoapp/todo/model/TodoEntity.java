@@ -1,5 +1,13 @@
 package com.sideprj.todoapp.todo.model;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,10 +31,32 @@ import lombok.NoArgsConstructor;
  */
 @Data
 /*
+ * 클래스를 Entity로 지정
+ */
+@Entity
+
+@Table(name = "TODOTB")
+/*
  * Entity는 DB의 테이블과 스키마를 표현
+ * ORM시 주의사항
+ * 1. @NoArgsConstructor 필요
+ * 2. Getter/Setter 필요
+ * 3. Primary Key 필요
  */
 public class TodoEntity {
 
+	/*
+	 * 기본 키가 될 필드를 지정 
+	 */
+	@Id
+	/*
+	 * ID 자동생성 
+	 */
+	@GeneratedValue(generator="system-uuid")
+	/*
+	 * custom Generator 
+	 */
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private String id;
 	private String userId;
 	private String title;
