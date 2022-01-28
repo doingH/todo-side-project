@@ -40,4 +40,15 @@ public class TodoDTO {
 		this.done = entity.isDone();
 	}
 	
+	/*
+	 *  캡슐화를 위한 DTO를 요청 BODY로 받으면 Entity로 변환하기 위한 함수
+	 */
+	public static TodoEntity toEntity(final TodoDTO dto) {
+		return TodoEntity.builder()
+						.id(dto.getId())
+						.title(dto.getTitle())
+						.done(dto.isDone())
+						.build();
+	}
+	
 }
