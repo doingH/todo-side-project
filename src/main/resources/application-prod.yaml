@@ -2,8 +2,8 @@ server:
   port : 5000
 spring:
   jpa:
-    database: MYSQL	#MYSQL사용
-    show-sql: true	#JPA가 실행한 sql 쿼리를 로그로 출력할 지 여부
+    database: MYSQL
+    show-sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
